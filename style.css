@@ -285,3 +285,14 @@
     color: orange; /* Optional: changes color on hover for better interactivity */
     text-decoration: underline; /* Optional: adds underline on hover */
 }
+
+/* Dynamic hover effect for project cards */
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(255, 189, 57, 0.4);
+}
