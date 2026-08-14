@@ -82,16 +82,19 @@
         business intelligence background into AI Engineering. Three years of combined experience: two years at
         Infineon Technologies AG, progressing from Working Student to Intern to full-time Business Analyst, and
         one year as a Business Analyst at Lemnisk — building Tableau dashboards, ETL pipelines, and data
-        infrastructure. English (C2), German (B2).</p>
+        infrastructure. English (C2), German (B1).</p>
         <p><span class="md-heading">## Education</span></p>
         <p>Dual Master's: Business Intelligence &amp; Data Science (ISM Germany) and a semester abroad in Business
         Management (Edinburgh Napier University, Scotland). Thesis: urbanization pattern prediction in Germany
         using data mining techniques.</p>
         <p><span class="md-heading">## Now</span></p>
-        <p>Closing the gap into AI Engineering through build work, not just courses: production-style projects on
-        FastAPI, LangGraph, Docker, and the Anthropic Claude API. Completed Microsoft's Develop AI Agents on Azure
-        learning path (Microsoft Foundry, MCP, Foundry IQ), and currently working toward the Google Cloud
-        Professional ML Engineer certification.</p>
+        <p>A run of completed, portfolio-grade AI projects: a self-retraining match-prediction pipeline that
+        correctly called the FIFA World Cup 2026 Final, a CI/CD safety gate that blocks bad LLM prompt changes
+        before they ship, a document-review agent that catches OCR errors a confidence score alone would miss,
+        and an adversarial red-team evaluation of a code-watermarking system that reports a negative result
+        honestly instead of hiding it. Completed Microsoft's Develop AI Agents on Azure path (9 labs, Microsoft
+        Foundry) and Snowflake's platform training; currently working toward the Google Cloud Professional ML
+        Engineer certification.</p>
       </div>
     </div>
     <div class="stat-column">
@@ -528,12 +531,14 @@
     <a href="https://github.com/beawesome8/Inventory-Management-Simulation" target="_blank" class="repo-card">
       <div class="repo-top">
         <div class="repo-top-main"><svg class="repo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg>
-          <span class="repo-name">Inventory Management Simulation</span>
+          <span class="repo-name">Inventory Optimization Simulation</span>
         </div>
+        <div class="repo-badges"><span class="repo-badge badge-metric">-46.2% vs naive baseline</span></div>
       </div>
-      <p class="repo-desc">Monte Carlo simulation modelling demand, holding/shortage costs, and supplier performance.</p>
+      <p class="repo-desc">Monte Carlo reorder-policy simulator using real bootstrapped demand (UCI Online Retail II, 374 days) instead of a fitted Normal distribution. Best supplier cut cost 46.2% vs. a naive baseline — but the slowest, cheapest supplier cost 36.8% more than doing nothing, a genuine trade-off confirmed across two different SKUs, not a modeling error.</p>
       <div class="repo-meta">
         <span><span class="lang-dot" style="background:#3572A5"></span>Python</span>
+        <span>Monte Carlo · real transaction data</span>
       </div>
     </a>
 
