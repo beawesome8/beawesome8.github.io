@@ -161,11 +161,12 @@ a { color: inherit; }
 .hero-copy { text-align: left; }
 
 .hero-photo {
-  width: 96px;
-  height: 96px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--accent);
+  object-position: center top;
+  border: 3px solid var(--accent);
   margin-bottom: 1.1rem;
 }
 
