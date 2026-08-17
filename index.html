@@ -119,7 +119,7 @@
         <span class="stat-label">Microsoft Azure AI agent certification labs completed</span>
       </div>
       <div class="stat-card">
-        <span class="stat-number">18</span>
+        <span class="stat-number">16</span>
         <span class="stat-label">public projects built and documented end to end</span>
       </div>
     </div>
@@ -346,24 +346,9 @@
     <span class="section-eyebrow">05</span>
     <h2>~/repos</h2>
   </div>
-  <p class="section-sub">Active build work, most recent first.</p>
-  <h3 class="repo-group-title">Build Projects</h3>
+  <p class="section-sub">Grouped by what each project actually is — LLM/agentic work, classic ML, or data engineering — so the tech stack is obvious at a glance.</p>
+  <h3 class="repo-group-title">LLM &amp; Agentic AI Projects</h3>
   <div class="repo-grid">
-
-    <a href="https://github.com/beawesome8/MatchCast" target="_blank" class="repo-card">
-      <div class="repo-top">
-        <div class="repo-top-main"><svg class="repo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8l3 2-1 3h-4l-1-3z"/><path d="M12 3v5M9 13l-4 3M15 13l4 3M9 16l1 5M15 16l-1 5"/></svg>
-          <span class="repo-name">MatchCast</span>
-        </div>
-        <div class="repo-badges"><span class="repo-badge badge-live">API live</span>
-        <span class="repo-badge badge-metric">predicted the Final correctly</span></div>
-      </div>
-      <p class="repo-desc">Self-retraining football match prediction pipeline built during the live FIFA World Cup 2026. Ran 84 automated retraining cycles, promoted a genuinely improved model three times via its own promotion gate, and correctly called the Final (Spain over Argentina). Every prediction logged pre-kickoff and scored after — verifiable, not claimed.</p>
-      <div class="repo-meta">
-        <span><span class="lang-dot" style="background:#3572A5"></span>Python</span>
-        <span>FastAPI · XGBoost · Postgres · Docker</span>
-      </div>
-    </a>
 
     <a href="https://github.com/beawesome8/DocuVet" target="_blank" class="repo-card">
       <div class="repo-top">
@@ -408,6 +393,20 @@
       </div>
     </a>
 
+    <a href="https://github.com/beawesome8/BQ-Vertex-Analyst" target="_blank" class="repo-card">
+      <div class="repo-top">
+        <div class="repo-top-main"><svg class="repo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M3 9h18"/><path d="M8 4v14"/></svg>
+          <span class="repo-name">BQ-Vertex-Analyst</span>
+        </div>
+        <div class="repo-badges"><span class="repo-badge badge-metric">8/8 phases complete</span></div>
+      </div>
+      <p class="repo-desc">A LangGraph agent using Gemini on Vertex AI for schema-aware BigQuery SQL generation and question recommendation, with a grounding/validation gate that catches hallucinated table references before execution. Proved that prompt-only instructions aren't enough for enforcement by reproducing a hallucinated-cardinality failure, then building and testing a code-level guard against it. Deployed live to Cloud Run, verified end-to-end, then deliberately torn down.</p>
+      <div class="repo-meta">
+        <span><span class="lang-dot" style="background:#3572A5"></span>Python</span>
+        <span>LangGraph · Vertex AI (Gemini) · BigQuery · Terraform</span>
+      </div>
+    </a>
+
     <a href="https://github.com/beawesome8/LLM-Cost-Optimizer" target="_blank" class="repo-card">
       <div class="repo-top">
         <div class="repo-top-main"><svg class="repo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a8 8 0 1116 0"/><path d="M12 14l3-4"/><circle cx="12" cy="14" r="1"/></svg>
@@ -419,20 +418,6 @@
       <div class="repo-meta">
         <span><span class="lang-dot" style="background:#3572A5"></span>Python</span>
         <span>SQLite · Streamlit</span>
-      </div>
-    </a>
-
-    <a href="https://github.com/beawesome8/FreshCart-Data-Pipeline" target="_blank" class="repo-card">
-      <div class="repo-top">
-        <div class="repo-top-main"><svg class="repo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4.5 7l15 10M19.5 7l-15 10"/></svg>
-          <span class="repo-name">FreshCart Data Pipeline</span>
-        </div>
-        <div class="repo-badges"><span class="repo-badge badge-live">CI/CD via GitHub Actions</span></div>
-      </div>
-      <p class="repo-desc">Governed Snowflake ELT pipeline (Streams, Tasks, SCD2) with automated data quality gates and CI/CD deployment via GitHub Actions. Built and stress-tested on synthetic food-delivery data.</p>
-      <div class="repo-meta">
-        <span><span class="lang-dot" style="background:#29B5E8"></span>SQL</span>
-        <span>Snowflake · Streams &amp; Tasks · GitHub Actions</span>
       </div>
     </a>
 
@@ -464,6 +449,55 @@
       </div>
     </a>
 
+    <a href="https://github.com/beawesome8/LLM-Systems-Engineering" target="_blank" class="repo-card">
+      <div class="repo-top">
+        <div class="repo-top-main"><svg class="repo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 6v4"/><circle cx="6" cy="14" r="2"/><circle cx="12" cy="14" r="2"/><circle cx="18" cy="14" r="2"/><path d="M12 10v2M12 10L6 12M12 10l6 2"/></svg>
+          <span class="repo-name">LLM Systems Engineering</span>
+        </div>
+        <div class="repo-badges"><span class="repo-badge badge-progress">1/5 domains built</span></div>
+      </div>
+      <p class="repo-desc">A taxonomy-driven companion repo mapping the disciplines around LLM systems, structured around Karpathy's 2025 "context engineering" framing: prompt and guardrail engineering as sub-disciplines beneath it, plus adjacent harness, agent, and embedding engineering domains. Prompt engineering is fully built (9 techniques, worked examples); the rest link out to production-scale proof elsewhere in this portfolio (PromptGuard, CodeMark, Recurring Research Agent, BQ-Vertex-Analyst) rather than re-explaining them.</p>
+      <div class="repo-meta">
+        <span><span class="lang-dot" style="background:#3572A5"></span>Python</span>
+        <span>Context Engineering Taxonomy</span>
+      </div>
+    </a>
+
+  </div>
+
+  <h3 class="repo-group-title repo-group-divider">Classic ML &amp; Predictive Analytics</h3>
+  <div class="repo-grid">
+
+    <a href="https://github.com/beawesome8/MatchCast" target="_blank" class="repo-card">
+      <div class="repo-top">
+        <div class="repo-top-main"><svg class="repo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8l3 2-1 3h-4l-1-3z"/><path d="M12 3v5M9 13l-4 3M15 13l4 3M9 16l1 5M15 16l-1 5"/></svg>
+          <span class="repo-name">MatchCast</span>
+        </div>
+        <div class="repo-badges"><span class="repo-badge badge-live">API live</span>
+        <span class="repo-badge badge-metric">predicted the Final correctly</span></div>
+      </div>
+      <p class="repo-desc">Self-retraining football match prediction pipeline built during the live FIFA World Cup 2026. Ran 84 automated retraining cycles, promoted a genuinely improved model three times via its own promotion gate, and correctly called the Final (Spain over Argentina). Every prediction logged pre-kickoff and scored after — verifiable, not claimed.</p>
+      <div class="repo-meta">
+        <span><span class="lang-dot" style="background:#3572A5"></span>Python</span>
+        <span>FastAPI · XGBoost · Postgres · Docker</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/beawesome8/Purchase-Intent-GCP" target="_blank" class="repo-card">
+      <div class="repo-top">
+        <div class="repo-top-main"><svg class="repo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.4a2 2 0 002 1.6h7.2a2 2 0 002-1.6L19 8H6"/><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg>
+          <span class="repo-name">Purchase Intent GCP</span>
+        </div>
+        <div class="repo-badges"><span class="repo-badge badge-metric">PR-AUC 0.747 vs 0.61 baseline</span>
+        <span class="repo-badge badge-live">live on Cloud Run</span></div>
+      </div>
+      <p class="repo-desc">XGBoost purchase-intent classifier, selected over a logistic regression baseline and a fully-built Keras neural network on evidence, not a default choice. Deployed as two Cloud Run services (API + Streamlit demo) behind a CI/CD gate that retrains and blocks merges below a PR-AUC floor \u2014 verified by deliberately sabotaging the pipeline and watching it correctly fail. Infrastructure managed with Terraform, imported from manually-created resources with a verified zero-destroy plan.</p>
+      <div class="repo-meta">
+        <span><span class="lang-dot" style="background:#3572A5"></span>Python</span>
+        <span>XGBoost \u00b7 FastAPI \u00b7 Terraform \u00b7 Cloud Run</span>
+      </div>
+    </a>
+
     <a href="https://github.com/beawesome8/Thesis-ISM-2025" target="_blank" class="repo-card">
       <div class="repo-top">
         <div class="repo-top-main"><svg class="repo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 5-10 5L2 8z"/><path d="M6 10.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-5.5"/></svg>
@@ -475,56 +509,6 @@
       <div class="repo-meta">
         <span><span class="lang-dot" style="background:#3572A5"></span>Python</span>
         <span>Data Mining</span>
-      </div>
-    </a>
-
-    <a href="https://github.com/beawesome8/Prompt-Engineering" target="_blank" class="repo-card">
-      <div class="repo-top">
-        <div class="repo-top-main"><svg class="repo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4c-2 0-3 1-3 3v3c0 1-1 2-2 2 1 0 2 1 2 2v3c0 2 1 3 3 3"/><path d="M16 4c2 0 3 1 3 3v3c0 1 1 2 2 2-1 0-2 1-2 2v3c0 2-1 3-3 3"/></svg>
-          <span class="repo-name">Prompt Engineering</span>
-        </div>
-      </div>
-      <p class="repo-desc">Few-Shot, CoT, ToT, Directional Stimulus, and Chain-of-Density prompting implementations.</p>
-      <div class="repo-meta">
-        <span><span class="lang-dot" style="background:#3572A5"></span>Python</span>
-      </div>
-    </a>
-
-    <a href="https://github.com/beawesome8/Books-Recommendation-System" target="_blank" class="repo-card">
-      <div class="repo-top">
-        <div class="repo-top-main"><svg class="repo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-          <span class="repo-name">Books Recommendation System</span>
-        </div>
-      </div>
-      <p class="repo-desc">A collaborative filtering approach recommending the top 50 rated books, with similar-title suggestions based on cosine similarity.</p>
-      <div class="repo-meta">
-        <span><span class="lang-dot" style="background:#3572A5"></span>Python</span>
-        <span>Flask · scikit-learn</span>
-      </div>
-    </a>
-
-    <a href="https://github.com/beawesome8/Laptop-Price-Prediction" target="_blank" class="repo-card">
-      <div class="repo-top">
-        <div class="repo-top-main"><svg class="repo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M2 18h20"/></svg>
-          <span class="repo-name">Laptop Price Predictor</span>
-        </div>
-      </div>
-      <p class="repo-desc">Price prediction via RandomForestRegressor, with Voting and Stacking regressors compared.</p>
-      <div class="repo-meta">
-        <span><span class="lang-dot" style="background:#3572A5"></span>Python</span>
-        <span>scikit-learn</span>
-      </div>
-    </a>
-
-    <a href="https://github.com/beawesome8/Customer_Segmentation" target="_blank" class="repo-card">
-      <div class="repo-top">
-        <div class="repo-top-main"><svg class="repo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><circle cx="12" cy="16" r="3"/></svg>
-          <span class="repo-name">Customer Segmentation</span>
-        </div>
-      </div>
-      <p class="repo-desc">K-means clustering prototype validated with inertia and silhouette scores.</p>
-      <div class="repo-meta">
-        <span><span class="lang-dot" style="background:#3572A5"></span>Python</span>
       </div>
     </a>
 
@@ -542,16 +526,22 @@
       </div>
     </a>
 
-    <a href="https://github.com/beawesome8/Customer-Revenue-Predictor" target="_blank" class="repo-card">
+  </div>
+
+  <h3 class="repo-group-title repo-group-divider">Data Engineering</h3>
+  <div class="repo-grid">
+
+    <a href="https://github.com/beawesome8/FreshCart-Data-Pipeline" target="_blank" class="repo-card">
       <div class="repo-top">
-        <div class="repo-top-main"><svg class="repo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M4 15l4-4 4 3 6-7"/></svg>
-          <span class="repo-name">Customer Revenue Predictor</span>
+        <div class="repo-top-main"><svg class="repo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4.5 7l15 10M19.5 7l-15 10"/></svg>
+          <span class="repo-name">FreshCart Data Pipeline</span>
         </div>
+        <div class="repo-badges"><span class="repo-badge badge-metric">7/8 phases complete</span></div>
       </div>
-      <p class="repo-desc">Django and TensorFlow app predicting revenue via a neural network, deployed on Heroku.</p>
+      <p class="repo-desc">Governed Snowflake ELT pipeline (medallion architecture: Stage &rarr; Clean &rarr; Consumption) using Streams, Tasks, and SCD2 dimensions, with PII protection via role-based secure views. The data quality gate was proven, not assumed: a deliberately injected bad row was caught and correctly blocked the consumption layer from refreshing. CI/CD deploys schema and pipeline objects via GitHub Actions on every push, with RSA key-pair auth.</p>
       <div class="repo-meta">
-        <span><span class="lang-dot" style="background:#3572A5"></span>Python</span>
-        <span>Django · TensorFlow</span>
+        <span><span class="lang-dot" style="background:#29B5E8"></span>SQL</span>
+        <span>Snowflake · Streams &amp; Tasks · GitHub Actions</span>
       </div>
     </a>
 
