@@ -34,9 +34,61 @@ body {
   line-height: 1.65;
 }
 
+@media (pointer: fine) {
+  body:not(.reduced-motion) { cursor: none; }
+  body:not(.reduced-motion) a,
+  body:not(.reduced-motion) button,
+  body:not(.reduced-motion) input,
+  body:not(.reduced-motion) .repo-card,
+  body:not(.reduced-motion) .commit-row {
+    cursor: none;
+  }
+}
+
+.cursor-dot, .cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+}
+.cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--cyan);
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+.cursor-ring.cursor-hover {
+  width: 52px;
+  height: 52px;
+  border-color: var(--accent);
+  background: rgba(240, 169, 62, 0.08);
+}
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-dot, .cursor-ring { display: none; }
+}
+
 a { color: inherit; }
 
 /* HEADER */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--cyan));
+  z-index: 1000;
+  transition: width 0.1s linear;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -47,12 +99,12 @@ a { color: inherit; }
 }
 
 .navbar {
-  max-width: 1440px;
+  max-width: 1800px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem;
+  padding: 1rem clamp(1.5rem, 3vw, 4rem);
 }
 
 .logo {
@@ -102,6 +154,23 @@ a { color: inherit; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
+  position: relative;
+}
+
+.terminal-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(320px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(240, 169, 62, 0.14), transparent 70%);
+}
+.boot-terminal:hover .terminal-glow { opacity: 1; }
+.boot-terminal .terminal-chrome,
+.boot-terminal .terminal-body { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .terminal-glow { display: none; }
 }
 
 .terminal-chrome {
@@ -141,14 +210,25 @@ a { color: inherit; }
 
 /* HERO */
 .hero {
-  max-width: 1440px;
+  max-width: 1800px;
   margin: 0 auto;
-  padding: 3.5rem 2.5rem 2.5rem;
+  padding: 3.5rem clamp(1.5rem, 4vw, 5rem) 2.5rem;
   min-height: calc(100svh - 65px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+#networkCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero-inner {
@@ -156,9 +236,24 @@ a { color: inherit; }
   grid-template-columns: 1.1fr 1fr;
   gap: 2.5rem;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-copy { text-align: left; }
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-photo { animation: heroFadeUp 0.7s cubic-bezier(.16,.84,.44,1) 0.1s both; }
+.hero-copy h1 { animation: heroFadeUp 0.7s cubic-bezier(.16,.84,.44,1) 0.22s both; }
+.hero-tag { animation: heroFadeUp 0.7s cubic-bezier(.16,.84,.44,1) 0.34s both; }
+.hero-actions { animation: heroFadeUp 0.7s cubic-bezier(.16,.84,.44,1) 0.46s both; }
+.social-links { animation: heroFadeUp 0.7s cubic-bezier(.16,.84,.44,1) 0.58s both; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo, .hero-copy h1, .hero-tag, .hero-actions, .social-links { animation: none; }
+}
 
 .hero-photo {
   width: 160px;
@@ -214,20 +309,62 @@ a { color: inherit; }
 .social-links a { font-size: 1.5rem; color: var(--text-muted); transition: color 0.2s ease; }
 .social-links a:hover { color: var(--accent); }
 
+.status-ticker {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+.status-ticker-track {
+  display: flex;
+  width: max-content;
+  gap: 3rem;
+  animation: ticker-scroll 32s linear infinite;
+}
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.ticker-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  flex-shrink: 0;
+}
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .status-ticker-track { animation: none; overflow-x: auto; }
+}
+
 .scroll-hint {
   text-align: center;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--text-muted);
+  position: relative;
+  z-index: 1;
 }
 .scroll-hint span { display: inline-block; animation: bob 1.6s ease-in-out infinite; }
 @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
 
 /* SECTIONS */
 .section {
-  max-width: 1440px;
+  max-width: 1800px;
   margin: 0 auto;
-  padding: 4.5rem 2.5rem;
+  padding: 4.5rem clamp(1.5rem, 4vw, 5rem);
   border-top: 1px solid var(--border);
 }
 
@@ -243,6 +380,13 @@ a { color: inherit; }
   align-items: baseline;
   gap: 0.9rem;
   margin-bottom: 0.5rem;
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity 0.7s cubic-bezier(.16,.84,.44,1), transform 0.7s cubic-bezier(.16,.84,.44,1);
+}
+.section.is-visible .section-head {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .section-eyebrow {
@@ -455,6 +599,12 @@ a { color: inherit; }
   font-weight: 600;
   color: var(--text-primary);
   margin: 0 0 1rem;
+}
+.repo-group-title.repo-group-divider {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-primary);
 }
 .repo-group-title.repo-group-learning {
   margin-top: 4rem;

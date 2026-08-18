@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-dot" id="cursorDot"></div>
 
 <header class="site-header">
   <nav class="navbar">
@@ -30,8 +33,10 @@
 </header>
 
 <section class="hero" id="hero">
+  <canvas id="networkCanvas" aria-hidden="true"></canvas>
   <div class="hero-inner">
-    <div class="terminal-window boot-terminal">
+    <div class="terminal-window boot-terminal" id="bootTerminal">
+      <div class="terminal-glow"></div>
       <div class="terminal-chrome">
         <span class="dot dot-red"></span><span class="dot dot-amber"></span><span class="dot dot-green"></span>
         <span class="terminal-title">aman@portfolio: ~</span>
@@ -62,6 +67,24 @@
       </div>
     </div>
   </div>
+
+  <div class="status-ticker" aria-hidden="true">
+    <div class="status-ticker-track">
+      <span class="ticker-item"><span class="ticker-dot"></span>MatchCast: 84 automated retrains, called the World Cup Final correctly</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>PromptGuard: caught a 93.3% schema validity drop, blocked 28/30 regressions</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>DocuVet: dual-OCR disagreement catches errors confidence scores miss</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>BQ-Vertex-Analyst: 100% on an 8-case golden set, adversarial paraphrase tested</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>FreshCart: data quality gate proven against a real injected failure</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>CodeMark: an honest negative result, including a failed proposed fix</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>MatchCast: 84 automated retrains, called the World Cup Final correctly</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>PromptGuard: caught a 93.3% schema validity drop, blocked 28/30 regressions</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>DocuVet: dual-OCR disagreement catches errors confidence scores miss</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>BQ-Vertex-Analyst: 100% on an 8-case golden set, adversarial paraphrase tested</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>FreshCart: data quality gate proven against a real injected failure</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>CodeMark: an honest negative result, including a failed proposed fix</span>
+    </div>
+  </div>
+
   <div class="scroll-hint">scroll <span>↓</span></div>
 </section>
 
