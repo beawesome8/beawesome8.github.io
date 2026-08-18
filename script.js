@@ -198,6 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (idx >= bootLines.length) {
       var final = document.querySelector('#bootBody .boot-final');
       if (final) final.style.opacity = 1;
+      setTimeout(revealLiveTerminal, 350);
       return;
     }
     typeLine(bootLines[idx], function () {
@@ -205,12 +206,39 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   })(0);
 
+  function revealLiveTerminal() {
+    ['liveOutput', 'quickCmds', 'terminalInputRow'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.classList.remove('terminal-live-hidden');
+      el.classList.add('terminal-live-shown');
+    });
+  }
+  if (reduceMotion) {
+    // no typing animation runs, so reveal immediately instead of waiting on the boot sequence
+    revealLiveTerminal();
+  }
+
+  function typeEyebrow(section) {
+    var eyebrow = section.querySelector('.section-eyebrow');
+    if (!eyebrow || reduceMotion) return;
+    var finalText = eyebrow.textContent;
+    eyebrow.textContent = '';
+    var i = 0;
+    (function step() {
+      eyebrow.textContent = finalText.slice(0, i);
+      i++;
+      if (i <= finalText.length) setTimeout(step, 90);
+    })();
+  }
+
   var revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
+          typeEyebrow(entry.target);
           io.unobserve(entry.target);
         }
       });
@@ -261,37 +289,99 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var commands = {
     help: function () {
-      printLine('Available commands:');
-      printLine('  whoami      — who I am');
-      printLine('  skills      — core stack');
-      printLine('  projects    — active repos');
-      printLine('  timeline    — career log');
-      printLine('  contact     — get in touch');
-      printLine('  resume      — jump to contact for a copy');
-      printLine('  clear       — clear the screen');
+      printLine('Navigation:');
+      printLine('  whoami · about · skills · certs · timeline (or log) · projects (or repos) · contact');
+      printLine('Project details:');
+      printLine('  matchcast · promptguard · docuvet · codemark · bqvertex · freshcart');
+      printLine('Other:');
+      printLine('  ls · github · linkedin · email · resume · banner · date · sudo hire-me · clear');
     },
     whoami: function () {
       printLine('Aman Benjamin Emmanuel — AI Engineer / Data Scientist, Munich, Germany. Open to work.');
     },
+    about: function () {
+      printLine('3 years across data, BI, and AI engineering. Two years at Infineon Technologies AG');
+      printLine('(Working Student -> Intern -> full-time Business Analyst), one year at Lemnisk.');
+      printLine('Now closing the gap into AI Engineering through shipped, verified projects.');
+    },
+    ls: function () {
+      printLine('about.md  stack.manifest  certifications.log  git-log/  repos/  contact/');
+      printLine('type any of: about, skills, certs, timeline, projects, contact');
+    },
     skills: function () {
       document.getElementById('skills').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
-      printLine('Scrolling to stack.manifest...');
+      printLine('Scrolling to stack.manifest... Python, FastAPI, LangGraph, Claude API, GCP, Azure, Snowflake, Terraform.');
+    },
+    certs: function () {
+      document.getElementById('certifications').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+      printLine('Scrolling to certifications.log... GCP ML Engineer (in progress), Microsoft Foundry (9 labs, done), Snowflake (done).');
     },
     projects: function () {
       document.getElementById('projects').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
-      printLine('Scrolling to ~/repos...');
+      printLine('Scrolling to ~/repos... try: matchcast, promptguard, docuvet, codemark, bqvertex, freshcart');
     },
+    repos: function () { commands.projects(); },
     timeline: function () {
       document.getElementById('timeline').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
       printLine('Scrolling to git log...');
+    },
+    log: function () { commands.timeline(); },
+    matchcast: function () {
+      printLine('MatchCast — self-retraining FIFA World Cup 2026 match prediction pipeline.');
+      printLine('84 automated retraining cycles. Correctly called the Final: Spain over Argentina.');
+      printLine('Stack: FastAPI, XGBoost, Postgres, Docker. github.com/beawesome8/MatchCast');
+    },
+    promptguard: function () {
+      printLine('PromptGuard — CI/CD safety gate for LLM prompt changes.');
+      printLine('Caught a 93.3% schema validity drop, blocked 28/30 regression cases before shipping.');
+      printLine('Stack: Python, Anthropic SDK, GitHub Actions. github.com/beawesome8/Prompt-Guard');
+    },
+    docuvet: function () {
+      printLine('DocuVet — multimodal document intake reviewer.');
+      printLine('Dual-OCR disagreement (not either engine\'s own confidence) triggers vision fallback.');
+      printLine('Caught a real misread a single-engine threshold would have missed. github.com/beawesome8/DocuVet');
+    },
+    codemark: function () {
+      printLine('CodeMark Red-Team Evaluation — adversarial testing of a code watermarking prototype.');
+      printLine('Honest negative result: ordinary LLM cleanup breaks the watermark, and the proposed');
+      printLine('research fix didn\'t hold either. github.com/beawesome8/codemark-redteam');
+    },
+    bqvertex: function () {
+      printLine('BQ-Vertex-Analyst — LangGraph agent for schema-aware BigQuery SQL on Vertex AI/Gemini.');
+      printLine('100% on an 8-case golden set including adversarial paraphrase testing.');
+      printLine('github.com/beawesome8/BQ-Vertex-Analyst');
+    },
+    freshcart: function () {
+      printLine('FreshCart Data Pipeline — governed Snowflake ELT pipeline (Stage -> Clean -> Consumption).');
+      printLine('Data quality gate proven against a real injected bad row, not just asserted.');
+      printLine('github.com/beawesome8/FreshCart-Data-Pipeline');
     },
     contact: function () {
       document.getElementById('contact').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
       printLine('Scrolling to contact --send...');
     },
+    github: function () {
+      printLine('Opening github.com/beawesome8...');
+      window.open('https://github.com/beawesome8', '_blank');
+    },
+    linkedin: function () {
+      printLine('Opening linkedin.com/in/beawesome8...');
+      window.open('https://www.linkedin.com/in/beawesome8/', '_blank');
+    },
+    email: function () {
+      printLine('benemmanuel80@gmail.com — opening mail client...');
+      window.location.href = 'mailto:benemmanuel80@gmail.com';
+    },
     resume: function () {
       printLine('No direct download here — reach out via contact and I\'ll send a role-tailored copy.');
       document.getElementById('contact').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+    },
+    banner: function () {
+      printLine('AI Engineer / Data Scientist — Munich, Germany. Open to work.');
+      printLine('Type help for a full command list.');
+    },
+    date: function () {
+      printLine(new Date().toString());
     },
     clear: function () {
       liveOutput.innerHTML = '';
