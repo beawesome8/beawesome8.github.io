@@ -703,6 +703,20 @@ a { color: inherit; }
   padding-top: 0.6rem;
   border-top: 1px solid var(--border);
 }
+
+.repo-links {
+  display: flex;
+  gap: 1rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--border);
+}
+.repo-links a {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--cyan);
+  text-decoration: none;
+}
+.repo-links a:hover { color: var(--accent); }
 .lang-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
 
 /* LIVE TERMINAL */
