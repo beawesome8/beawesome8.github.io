@@ -297,11 +297,11 @@ document.addEventListener('DOMContentLoaded', function () {
       printLine('  ls · github · linkedin · email · resume · banner · date · sudo hire-me · clear');
     },
     whoami: function () {
-      printLine('Aman Benjamin Emmanuel — AI Engineer / Data Scientist, Munich, Germany. Open to work.');
+      printLine('Aman Benjamin Emmanuel — Business Engineer / AI Engineer, Munich, Germany. Open to work.');
     },
     about: function () {
-      printLine('3 years across data, BI, and AI engineering. Two years at Infineon Technologies AG');
-      printLine('(Working Student -> Intern -> full-time Business Analyst), one year at Lemnisk.');
+      printLine('3.5 years across data, BI, and AI engineering. Two years at Infineon Technologies AG');
+      printLine('(Working Student -> Intern -> full-time Business Analyst), one year at Lemnisk, plus a data science internship.');
       printLine('Now closing the gap into AI Engineering through shipped, verified projects.');
     },
     ls: function () {
@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('contact').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
     },
     banner: function () {
-      printLine('AI Engineer / Data Scientist — Munich, Germany. Open to work.');
+      printLine('Business Engineer / AI Engineer — Munich, Germany. Open to work.');
       printLine('Type help for a full command list.');
     },
     date: function () {
